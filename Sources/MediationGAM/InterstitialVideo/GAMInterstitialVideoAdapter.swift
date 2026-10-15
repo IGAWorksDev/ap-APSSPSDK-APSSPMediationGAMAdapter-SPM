@@ -14,10 +14,14 @@ final public class GAMInterstitialVideoAdapter: APSSPInterstitialVideoAdapterPro
    
     private var gamMediationInterstitialVideoAd: GAMMediationInterstitialVideoAd?
     
-    public var delegate: APSSPInterstitialVideoAdapterDelegate?
+    public weak var delegate: APSSPInterstitialVideoAdapterDelegate?
     
-    public var rootViewController: UIViewController?
+    public weak var rootViewController: UIViewController?
     
+    deinit {
+        APLogger.debug("GAMInterstitialVideoAdapter deinit")
+    }
+
     public init(placementDic: [String: String], rootViewController: UIViewController?, info: [String : Any?]) {
         let placementId = placementDic[APSSPPlacementKey.adUnitID.rawValue] ?? ""
         gamMediationInterstitialVideoAd = GAMMediationInterstitialVideoAd(placementId: placementId)

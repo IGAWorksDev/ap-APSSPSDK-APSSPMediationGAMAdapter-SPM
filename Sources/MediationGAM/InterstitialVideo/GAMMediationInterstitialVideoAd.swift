@@ -13,7 +13,7 @@ import GoogleMobileAds
 
 final class GAMMediationInterstitialVideoAd: NSObject {
     
-    var delegate: APSSPInterstitialVideoAdapterDelegate?
+    weak var delegate: APSSPInterstitialVideoAdapterDelegate?
     
     private var interstitialVideo: AdManagerInterstitialAd?
     
@@ -64,7 +64,7 @@ extension GAMMediationInterstitialVideoAd: FullScreenContentDelegate {
     
     public func ad(_ ad: FullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
         APLogger.error("GAM InterstitialVideo Error: \(error.localizedDescription)")
-        delegate?.interstitialVideoLoadFail(error: .nextMediation, errorMessage: error.localizedDescription)
+        delegate?.interstitialVideoShowFail(message: error.localizedDescription)
     }
     
     public func adDidRecordClick(_ ad: FullScreenPresentingAd) {

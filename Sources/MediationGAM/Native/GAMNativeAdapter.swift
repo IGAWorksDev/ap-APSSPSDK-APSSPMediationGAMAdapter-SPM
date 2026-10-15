@@ -15,7 +15,7 @@ final public class GAMNativeAdapter: APSSPNativeAdapterProtocol {
     
     weak public var delegate: APSSPNativeViewAdapterDelegate?
     
-    public var rootViewController: UIViewController?
+    public weak var rootViewController: UIViewController?
     
     private var gamNativeAdView: GAMMediationNativeAdView
     

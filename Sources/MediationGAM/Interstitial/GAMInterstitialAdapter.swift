@@ -12,13 +12,17 @@ import APSSPSDK
 
 final public class GAMInterstitialAdapter: APSSPInterstitialAdapterProtocol {
 
-    public var rootViewController: UIViewController?
+    public weak var rootViewController: UIViewController?
     
-    public var delegate: APSSPInterstitialAdapterDelegate?
+    public weak var delegate: APSSPInterstitialAdapterDelegate?
     
     private var gamMediationInterstitialAd: GAMMediationInterstitialAd?
 
     
+    deinit {
+        APLogger.debug("GAMInterstitialAdapter deinit")
+    }
+
     public init(placementDic: [String: String], rootViewController: UIViewController?, info: [String : Any?]) {
         let placementId = placementDic[APSSPPlacementKey.adUnitID.rawValue] ?? ""
         gamMediationInterstitialAd = GAMMediationInterstitialAd(placementId: placementId)

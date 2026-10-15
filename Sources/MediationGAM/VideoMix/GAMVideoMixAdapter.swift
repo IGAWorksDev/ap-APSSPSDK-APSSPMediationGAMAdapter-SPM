@@ -12,9 +12,9 @@ import APSSPSDK
 
 final public class GAMVideoMixAdapter: APSSPVideoMixAdAdapterProtocol {
     
-    public var rootViewController: UIViewController?
+    public weak var rootViewController: UIViewController?
     
-    public var videoMixDelegate: APSSPVideoMixAdAdapterDelegate?
+    public weak var videoMixDelegate: APSSPVideoMixAdAdapterDelegate?
     
     public var videoMixAdType: APSSPVideoMixAdType = .RewardVideo
     
@@ -25,6 +25,10 @@ final public class GAMVideoMixAdapter: APSSPVideoMixAdAdapterProtocol {
     private var rewardVideoAdapter: GAMRewardVideoAdapter?
     
     
+    deinit {
+        APLogger.debug("GAMVideoMixAdapter deinit")
+    }
+
     public init(placementDic: [String: String], rootViewController: UIViewController?, info: [String: Any?]) {
         self.placementDic = placementDic
         self.rootViewController = rootViewController
